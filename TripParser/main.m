@@ -22,8 +22,24 @@
 
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
+        NSURL *applicationURL = [NSURL fileURLWithFileSystemRepresentation:argv[0]
+                                                               isDirectory:NO
+                                                             relativeToURL:nil];
+        
+        if (!applicationURL) {
+            printf("Executable path is malformed\n");
+            
+            return 1;
+        }
+        NSURL *fileURL = [NSURL fileURLWithFileSystemRepresentation:argv[1]
+                                                        isDirectory:NO
+                                                      relativeToURL:applicationURL];
+        
+        if (!fileURL) {
+            printf("File path is malformed\n");
+            
+            return 1;
+        }
     }
     
     return 0;
