@@ -20,6 +20,8 @@
 
 @import Foundation;
 
+#import "parser.h"
+
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
         NSURL *applicationURL = [NSURL fileURLWithFileSystemRepresentation:argv[0]
@@ -40,6 +42,7 @@ int main(int argc, const char *argv[]) {
             
             return 1;
         }
+        FindCharactersFromCStringInFileWithURL("OneTwoTrip", fileURL);
     }
     
     return 0;
